@@ -8,7 +8,7 @@ import cors from "cors"
 const app = express() 
 
 app.use(cors({
-    origin: "https://fullstacktodos-hashim.netlify.app/",
+    origin: "https://fullstacktodos-hashim.netlify.app",
     credentials: true,
 }))
 
