@@ -8,7 +8,7 @@ import cors from "cors"
 const app = express() 
 
 app.use(cors({
-    origin: "https://todosfullstack.vercel.app",
+    origin: "https://fullstacktodo-sfrontend.onrender.com",
     credentials: true,
 }))
 
