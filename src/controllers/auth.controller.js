@@ -41,9 +41,11 @@ const token = jwt.sign({
 }, process.env.JWT_SECRET, { expiresIn: "7d" })
 
 res.cookie("token", token, {
+    httpOnly: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true
-})
+    sameSite: "lax",
+    secure: false, // true in production (HTTPS)
+});
 
 res.status(201).json({
     message : "User Registered Successfully",
@@ -96,9 +98,11 @@ try {
 }, process.env.JWT_SECRET, { expiresIn: "7d" })
 
 res.cookie("token", token, {
+    httpOnly: true,
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true
-})
+    sameSite: "lax",
+    secure: false, // true in production (HTTPS)
+});
 
     res.status(200).json({
         massege : "Succesfully Login",
@@ -112,6 +116,20 @@ res.cookie("token", token, {
     })
 
 }
+}
+
+async function LogoutUser(req, res) {
+  try {
+    res.clearCookie("token");
+
+    res.status(200).json({
+      message: "Logged out successfully"
+    });
+  } catch (err) {
+    res.status(500).json({
+      message: "Internal Server Error"
+    });
+  }
 }
 
 
@@ -142,4 +160,4 @@ res.status(500).json({
 }
 
 
-export default { RegisterUser, LoginUser, isLoggedIn }
+export default { RegisterUser, LoginUser, isLoggedIn, LogoutUser}
