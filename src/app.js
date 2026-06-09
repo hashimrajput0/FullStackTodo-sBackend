@@ -8,7 +8,7 @@ import cors from "cors"
 const app = express() 
 
 app.use(cors({
-    origin: "https://fullstacktodos-hashim.netlify.app",
+    origin: "https://todosfullstack.vercel.app",
     credentials: true,
 }))
 
