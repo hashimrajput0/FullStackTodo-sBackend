@@ -42,9 +42,9 @@ const token = jwt.sign({
 
 res.cookie("token", token, {
     httpOnly: true,
+    secure: true,        // REQUIRED in production (HTTPS)
+    sameSite: "none",    // REQUIRED for cross-site cookies
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "lax",
-    secure: false, // true in production (HTTPS)
 });
 
 res.status(201).json({
@@ -99,9 +99,9 @@ try {
 
 res.cookie("token", token, {
     httpOnly: true,
+    secure: true,        // REQUIRED in production (HTTPS)
+    sameSite: "none",    // REQUIRED for cross-site cookies
     maxAge: 7 * 24 * 60 * 60 * 1000,
-    sameSite: "lax",
-    secure: false, // true in production (HTTPS)
 });
 
     res.status(200).json({
